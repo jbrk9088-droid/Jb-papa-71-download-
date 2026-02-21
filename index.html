@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JB Papa 71 Music Bot</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+header{
+background:#111827;
+padding:20px;
+}
+
+h1{
+margin:0;
+font-size:26px;
+}
+
+.bot-img{
+width:140px;
+height:140px;
+border-radius:20px;
+margin-top:20px;
+object-fit:cover;
+border:3px solid #22c55e;
+}
+
+.container{
+padding:20px;
+}
+
+button{
+width:90%;
+max-width:320px;
+padding:15px;
+margin:10px;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+background:#22c55e;
+color:white;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+input{
+width:90%;
+max-width:320px;
+padding:12px;
+margin-top:15px;
+border-radius:10px;
+border:none;
+}
+
+.footer{
+margin-top:40px;
+opacity:0.6;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎵 JB Papa 71 Music Bot</h1>
+</header>
+
+<img class="bot-img" src="https://your-bot-api-url.vercel.app">
+
+<div class="container">
+
+<h3>Bot Menu</h3>
+
+<button onclick="menu()">📜 Show Menu</button>
+<button onclick="playMusic()">▶ Play Music</button>
+<button onclick="stopMusic()">⏹ Stop Music</button>
+<button onclick="alive()">🤖 Bot Status</button>
+
+<br>
+
+<input id="song" placeholder="Enter song name">
+
+</div>
+
+<div class="footer">
+Running on Vercel
+</div>
+
+<script>
+
+const BOT_API = "https://your-bot-api-url.vercel.app";
+
+async function menu(){
+await fetch(BOT_API + "/menu");
+alert("Menu sent to WhatsApp group");
+}
+
+async function playMusic(){
+let song = document.getElementById("song").value;
+
+await fetch(BOT_API + "/play?song=" + encodeURIComponent(song));
+
+alert("Music request sent");
+}
+
+async function stopMusic(){
+await fetch(BOT_API + "/stop");
+alert("Music stopped");
+}
+
+async function alive(){
+await fetch(BOT_API + "/alive");
+alert("Bot is running");
+}
+
+</script>
+
+  
+  
+  
+  
+  
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JB Papa 71 Download</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+header{
+background:#111827;
+padding:20px;
+font-size:24px;
+font-weight:bold;
+}
+
+.container{
+padding:20px;
+}
+
+input{
+width:90%;
+max-width:400px;
+padding:12px;
+border-radius:10px;
+border:none;
+margin-top:10px;
+}
+
+button{
+display:block;
+margin:15px auto;
+padding:14px;
+width:90%;
+max-width:300px;
+border:none;
+border-radius:12px;
+background:#22c55e;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+.card{
+background:#111827;
+padding:15px;
+border-radius:14px;
+margin-top:20px;
+}
+
+img{
+max-width:100%;
+border-radius:12px;
+margin-top:15px;
+}
+
+a.linkbtn{
+display:block;
+background:#2563eb;
+padding:12px;
+border-radius:12px;
+margin:10px auto;
+width:90%;
+max-width:300px;
+color:white;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+JB Papa 71 Download
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>WhatsApp DP Download</h3>
+<input id="number" placeholder="Enter WhatsApp number with country code">
+<button onclick="getDP()">Download DP</button>
+<div id="dpResult"></div>
+</div>
+
+<div class="card">
+<h3>WhatsApp Status Download</h3>
+<input id="statuslink" placeholder="Paste Status Link">
+<button onclick="downloadStatus()">Download Status</button>
+<div id="statusResult"></div>
+</div>
+
+<div class="card">
+<h3>Join Our Links</h3>
+
+<a class="linkbtn" href="https://t.me/yourtelegram" target="_blank">
+Join Telegram
+</a>
+
+<a class="linkbtn" href="https://whatsapp.com/channel/yourchannel" target="_blank">
+Join WhatsApp Channel
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const API = "https://api.example.com";
+
+async function getDP(){
+let number = document.getElementById("number").value;
+
+let res = await fetch(API + "/whatsapp/dp?number=" + number);
+let data = await res.json();
+
+document.getElementById("dpResult").innerHTML =
+`<img src="${data.result}" />`;
+}
+
+async function downloadStatus(){
+let link = document.getElementById("statuslink").value;
+
+let res = await fetch(API + "/whatsapp/status?url=" + encodeURIComponent(link));
+let data = await res.json();
+
+document.getElementById("statusResult").innerHTML =
+`<a href="${data.result}" download>Download Now</a>`;
+}
+
+</script>
+
+</body>
+</html>
